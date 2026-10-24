@@ -79,7 +79,6 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Externe bronnen](https://ai-agents.donateursbelangen.nl/externe-bronnen)
 - [Fiscaalschenken](https://ai-agents.donateursbelangen.nl/fiscaalschenken)
 - [Fondsenwerving](https://ai-agents.donateursbelangen.nl/fondsenwerving)
-- [Ga naar uitleg over de gratis online donateursbelangen community](https://ai-agents.donateursbelangen.nl/deelnemen)
 - [GDN](https://ai-agents.donateursbelangen.nl/gdn)
 - [Gebruikersvoorwaarden](https://ai-agents.donateursbelangen.nl/gebruikersvoorwaarden)
 - [Geef adviseurs](https://ai-agents.donateursbelangen.nl/geef-adviseurs)
@@ -142,3 +141,4 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Waarop worden punten verloren/afgetrokken?](https://ai-agents.donateursbelangen.nl/score-individueel-goed-doel-online-eenmalig-doneren)
 - [WhatsApp](https://ai-agents.donateursbelangen.nl/whatsapp)
 - [Whitepaper de donateur centraal stellen](https://ai-agents.donateursbelangen.nl/whitepaper-de-donateur-centraal-stellen)
+- [Word gratis lid van Donateursbelangen](https://ai-agents.donateursbelangen.nl/deelnemen)
