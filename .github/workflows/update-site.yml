@@ -7,10 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "sample = proefrun, daily = alleen nieuw/gewijzigd, full = alles"
+        description: "test = alleen de URL's hieronder, sample = proefrun, daily = nieuw/gewijzigd, full = alles"
         type: choice
-        options: [sample, daily, full]
-        default: sample
+        options: [test, sample, daily, full]
+        default: test
+      urls:
+        description: "Alleen bij test: URL's van www.donateursbelangen.nl, gescheiden door komma's"
+        default: "https://www.donateursbelangen.nl/goede-doel/de-hollandsche-molen/r/J3XYRno2K95dsg"
       limit:
         description: "Maximum aantal pagina's (0 = geen limiet)"
         default: "100"
@@ -53,7 +56,16 @@ jobs:
           fi
 
       - name: Pagina's uitlezen
-        run: python render.py --mode "${{ steps.mode.outputs.mode }}" --limit "${{ steps.mode.outputs.limit }}" --concurrency 5
+        run: python render.py --mode "${{ steps.mode.outputs.mode }}" --limit "${{ steps.mode.outputs.limit }}" --urls "${{ inputs.urls }}" --concurrency 5
+
+      - name: Schermafbeeldingen en diagnose bewaren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug
+          path: debug/
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Overzicht, llms.txt en sitemap maken
         run: python generate_discovery.py --sitemap state/sitemap.xml --out site --rendered site
