@@ -1,14 +1,11 @@
 {
- "mode": "sample",
- "datum": "2026-10-24T13:41:42+00:00",
- "duur_min": 2.5,
- "pagina's": 100,
+ "mode": "test",
+ "datum": "2026-10-24T14:10:36+00:00",
+ "duur_min": 0.3,
+ "pagina's": 1,
  "resultaat": {
-  "bijgewerkt": 99,
-  "mislukt": 1
+  "bijgewerkt": 1
  },
  "verwijderd": 0,
- "mislukt": [
-  "https://www.donateursbelangen.nl/goede-doel/britt_helpt/r/T7DFbPo0QZc9hM"
- ]
+ "mislukt": []
 }
