@@ -1,10 +1,10 @@
 {
  "mode": "test",
- "datum": "2026-10-24T14:22:04+00:00",
- "duur_min": 0.4,
- "pagina's": 1,
+ "datum": "2026-10-24T14:29:45+00:00",
+ "duur_min": 1.3,
+ "pagina's": 3,
  "resultaat": {
-  "bijgewerkt": 1
+  "bijgewerkt": 3
  },
  "verwijderd": 0,
  "mislukt": []

@@ -7,7 +7,7 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 ## Belangrijkste pagina's
 
 - [Home](https://ai-agents.donateursbelangen.nl/home)
-- [Over ons](https://ai-agents.donateursbelangen.nl/over-ons)
+- [Stichting Donateursbelangen](https://ai-agents.donateursbelangen.nl/over-ons)
 - [Welkom](https://ai-agents.donateursbelangen.nl/welkom)
 - [Goede doelen lijst](https://ai-agents.donateursbelangen.nl/goede-doelen-lijst)
 - [ANBI-portaal](https://ai-agents.donateursbelangen.nl/anbi-portaal)

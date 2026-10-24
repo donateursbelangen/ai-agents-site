@@ -156,10 +156,10 @@
   "rendered": "2026-10-24T13:40:21+00:00"
  },
  "https://www.donateursbelangen.nl/goede-doel/de-hollandsche-molen/r/J3XYRno2K95dsg": {
-  "changed": "2026-10-24T14:22:03+00:00",
-  "hash": "5120fea0ac3f1fde2603a67818e56a85a5f6af59bf888d4b2e699e197e30ed9f",
+  "changed": "2026-10-24T14:28:48+00:00",
+  "hash": "b581ebc1cd66a1022a2413cb49c5a7dcb926ef0d0686087c19bd73b8090a80eb",
   "lastmod": "",
-  "rendered": "2026-10-24T14:22:03+00:00"
+  "rendered": "2026-10-24T14:28:48+00:00"
  },
  "https://www.donateursbelangen.nl/goede-doel/de_buurt/r/lkgr2wiAZszosm": {
   "changed": "2026-10-24T13:40:43+00:00",
@@ -431,6 +431,12 @@
   "lastmod": "",
   "rendered": "2026-10-24T13:39:41+00:00"
  },
+ "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-email/stichting-echt/r/EHdLkOjiaPIsem": {
+  "changed": "2026-10-24T14:28:37+00:00",
+  "hash": "1d65fa9bed34725ba68bb9d6fbaa4b5a4ca2f33ea665822c95941b4e7af333ad",
+  "lastmod": "",
+  "rendered": "2026-10-24T14:28:37+00:00"
+ },
  "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-email/stichting-muziekcentrum-zoeterwoude/r/68otQ6t6zTrqly": {
   "changed": "2026-10-24T13:39:31+00:00",
   "hash": "c79bf98f8df9d496e02faa81f1e95e1f2eedb8e0b510bf932d8e472bf49e220f",
@@ -448,6 +454,12 @@
   "hash": "503056ee22d1c0f81738aa8ad70bdc5fd8b60fe3545a6b6e3e5773ffefca64c4",
   "lastmod": "",
   "rendered": "2026-10-24T13:39:31+00:00"
+ },
+ "https://www.donateursbelangen.nl/over-ons": {
+  "changed": "2026-10-24T14:29:44+00:00",
+  "hash": "01ee87153348e4d59d1282bbe2b6e880dde60b98c758c85c071110fab57106e7",
+  "lastmod": "2026-07-30",
+  "rendered": "2026-10-24T14:29:44+00:00"
  },
  "https://www.donateursbelangen.nl/privacy": {
   "changed": "2026-10-24T13:39:25+00:00",
