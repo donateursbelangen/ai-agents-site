@@ -64,7 +64,8 @@ table{border-collapse:collapse;display:block;overflow-x:auto}td,th{border:1px so
 EXTRACT_JS = r"""
 () => {
   const SKIP = new Set(['SCRIPT','STYLE','NOSCRIPT','TEMPLATE','IMG','PICTURE','VIDEO','AUDIO',
-    'INPUT','SELECT','TEXTAREA','BUTTON','LINK','META','HEADER','FOOTER','NAV','SVG','svg','OBJECT','EMBED']);
+    'INPUT','SELECT','TEXTAREA','BUTTON','LINK','META','HEADER','FOOTER','NAV','SVG','svg','OBJECT','EMBED',
+    'FORM','LABEL']);
   const KEEP = new Set(['H1','H2','H3','H4','H5','H6','P','UL','OL','LI','TABLE','THEAD','TBODY','TFOOT',
     'TR','TD','TH','CAPTION','A','STRONG','B','EM','I','BLOCKQUOTE','BR','DL','DT','DD','SUP','SUB']);
   const SKIP_RE = /leaflet|navbar|cookie|apexcharts-toolbar|highcharts-credits|modal|popup/i;
@@ -72,7 +73,13 @@ EXTRACT_JS = r"""
   const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const attr = t => esc(String(t)).replace(/"/g,'&quot;');
   const fmt = v => (v && typeof v === 'object') ? (v.y ?? v.value ?? v.v ?? JSON.stringify(v)) : (v ?? '');
-  const diag = {iframes: [], charts: {}, canvasesZonderData: 0};
+  const diag = {iframes: [], charts: {}, canvasesZonderData: 0, shadowRoots: 0, weggelaten: []};
+  const note = (el, reden) => {
+    let t = 0; try { t = (el.innerText || el.textContent || '').trim().length; } catch (e) {}
+    if (t >= 40 && diag.weggelaten.length < 60) diag.weggelaten.push({reden, tag: el.tagName,
+      id: (el.id || '').slice(0, 60), klasse: (typeof el.className === 'string' ? el.className : '').slice(0, 80),
+      tekst: t, begin: (el.innerText || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 60)});
+  };
 
   function table(title, labels, series) {
     if (!series.length) return '';
@@ -153,20 +160,26 @@ EXTRACT_JS = r"""
     } catch (e) { return true; }
   }
 
+  function children(el) {
+    if (el.tagName === 'SLOT') return el.assignedNodes({flatten: true});
+    if (el.shadowRoot) { diag.shadowRoots++; return el.shadowRoot.childNodes; }
+    return el.childNodes;
+  }
+
   function walk(node, win) {
     if (node.nodeType === 3) return esc(node.textContent.replace(/\s+/g, ' '));
+    if (node.nodeType === 11) { let o = ''; for (const c of node.childNodes) o += walk(c, win); return o; }
     if (node.nodeType !== 1) return '';
     const el = node, tag = el.tagName;
     if (tag === 'IFRAME') {
-      if (!visible(el)) return '';
+      if (!visible(el)) { note(el, 'iframe onzichtbaar'); return ''; }
       let doc = null;
       try { doc = el.contentDocument; } catch (e) {}
       diag.iframes.push({src: (el.getAttribute('src') || '').slice(0, 120), srcdoc: !!el.getAttribute('srcdoc'), leesbaar: !!(doc && doc.body)});
       return (doc && doc.body) ? walk(doc.body, el.contentWindow) : '';
     }
-    if (SKIP.has(tag)) return '';
-    if (/(^|[-_])(header|footer|navbar|nav)\d*$/i.test(el.id || '')) return '';
-    if (SKIP_RE.test((el.id || '') + ' ' + (typeof el.className === 'string' ? el.className : ''))) return '';
+    if (SKIP.has(tag)) { if (!['SCRIPT','STYLE','NOSCRIPT','TEMPLATE','META','LINK'].includes(tag)) note(el, 'tag ' + tag); return ''; }
+    if (SKIP_RE.test((el.id || '') + ' ' + (typeof el.className === 'string' ? el.className : ''))) { note(el, 'naam'); return ''; }
     if (tag === 'CANVAS') {
       const t = chartFromCanvas(el, win);
       if (t === null) diag.canvasesZonderData++;
@@ -174,9 +187,11 @@ EXTRACT_JS = r"""
     }
     const chart = chartFromContainer(el, win);
     if (chart) return chart;
-    if (!visible(el)) return '';
+    if (!visible(el)) { note(el, 'onzichtbaar'); return ''; }
+    const tc = el.textContent || '';
+    if (tag !== 'BODY' && tag !== 'MAIN' && tc.length < 3000 && tc.includes('Alle rechten voorbehouden') && /©\s*20\d\d/.test(tc)) { note(el, 'footer-tekst'); return ''; }
     let inner = '';
-    for (const ch of el.childNodes) inner += walk(ch, win);
+    for (const ch of children(el)) inner += walk(ch, win);
     if (KEEP.has(tag)) {
       if (tag === 'BR') return '<br>';
       if (!inner.trim()) return '';
@@ -199,7 +214,7 @@ EXTRACT_JS = r"""
   }
 
   let body = walk(document.body, window)
-    .replace(/<p>\s*Loading\.\.\.\s*<\/p>/gi, '')
+    .replace(/<p>\s*(Loading\.\.\.|0\.00)\s*<\/p>/gi, '')
     .replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n');
   const desc = document.querySelector('meta[name="description"]');
   const tmp = document.createElement('div'); tmp.innerHTML = body;
@@ -221,12 +236,45 @@ PROGRESS_JS = r"""
   let len = 0, loading = 0;
   const docs = [document];
   document.querySelectorAll('iframe').forEach(f => { try { if (f.contentDocument) docs.push(f.contentDocument); } catch (e) {} });
-  for (const d of docs) {
-    const t = (d.body && d.body.innerText) || '';
+  const roots = [];
+  const collect = r => { roots.push(r); r.querySelectorAll('*').forEach(e => { if (e.shadowRoot) collect(e.shadowRoot); }); };
+  docs.forEach(d => d.body && collect(d.body));
+  for (const r of roots) {
+    const t = r === r.ownerDocument?.body ? (r.innerText || '') : Array.from(r.childNodes).map(n => n.innerText || n.textContent || '').join(' ');
     len += t.length;
     loading += (t.match(/Loading\.\.\./g) || []).length;
   }
   return {len, loading, height: document.body.scrollHeight};
+}
+"""
+
+EXPAND_JS = r"""
+() => {
+  // ingeklapte secties openen: <details>, elementen met aria-expanded="false"
+  // en knoppen met een 'oogje' (eye) die een sectie tonen
+  const roots = [];
+  const collect = r => { roots.push(r); r.querySelectorAll('*').forEach(e => { if (e.shadowRoot) collect(e.shadowRoot); }); };
+  collect(document);
+  document.querySelectorAll('iframe').forEach(f => { try { if (f.contentDocument) collect(f.contentDocument); } catch (e) {} });
+  let n = 0;
+  const kandidaten = [];
+  for (const r of roots) {
+    r.querySelectorAll('details:not([open])').forEach(d => { d.open = true; n++; });
+    r.querySelectorAll('[aria-expanded="false"]').forEach(e => {
+      if (e.tagName === 'A' && e.getAttribute('href') && !e.getAttribute('href').startsWith('#')) return;
+      if (e.closest('header, nav')) return;
+      try { e.click(); n++; } catch (x) {}
+    });
+    r.querySelectorAll('button, [role="button"]').forEach(b => {
+      const h = (b.outerHTML || '').slice(0, 400);
+      if (kandidaten.length < 15 && !b.closest('header, nav') && !(b.innerText || '').trim())
+        kandidaten.push(h.slice(0, 200));
+      if (/eye(?![-_]?slash|[-_]?off)/i.test(h) && !/eye[-_]?(slash|off)/i.test(h) && !b.closest('header, nav')) {
+        try { b.click(); n++; } catch (x) {}
+      }
+    });
+  }
+  return {geklikt: n, kandidaten};
 }
 """
 
@@ -319,7 +367,7 @@ async def render_one(context, url, timeout_ms, debug_dir=None):
         # scrollen zodat lui geladen blokken starten, daarna wachten tot de
         # hoeveelheid tekst 3 seconden gelijk blijft en "Loading..." weg is
         await page.evaluate(SCROLL_JS)
-        last, stable, scrolled_again, prog = -1, 0, False, {}
+        last, stable, scrolled_again, prog, expand = -1, 0, False, {}, {}
         while time.time() < deadline:
             await page.wait_for_timeout(1000)
             prog = await page.evaluate(PROGRESS_JS)
@@ -328,6 +376,7 @@ async def render_one(context, url, timeout_ms, debug_dir=None):
             if stable >= 3 and prog["loading"] == 0:
                 break
             if stable >= 3 and not scrolled_again:
+                expand = await page.evaluate(EXPAND_JS)
                 await page.evaluate(SCROLL_JS)
                 scrolled_again, stable = True, 0
         data = await page.evaluate(EXTRACT_JS)
@@ -337,7 +386,7 @@ async def render_one(context, url, timeout_ms, debug_dir=None):
             await page.screenshot(path=str(debug_dir / f"{name}.png"), full_page=True)
             (debug_dir / f"{name}.json").write_text(json.dumps(
                 {"url": url, "tekst_lengte": len(data["text"]), "diag": data["diag"],
-                 "voortgang": prog}, indent=1, ensure_ascii=False))
+                 "voortgang": prog, "uitklappen": expand}, indent=1, ensure_ascii=False))
         return data
     finally:
         await page.close()
