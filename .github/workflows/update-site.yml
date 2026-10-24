@@ -1,0 +1,74 @@
+name: Leesbare site bijwerken
+
+on:
+  schedule:
+    - cron: "0 3 * * 1-6"   # maandag t/m zaterdag 03:00 UTC: dagelijkse update
+    - cron: "0 1 * * 0"     # zondag 01:00 UTC: alle pagina's opnieuw
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "sample = proefrun, daily = alleen nieuw/gewijzigd, full = alles"
+        type: choice
+        options: [sample, daily, full]
+        default: sample
+      limit:
+        description: "Maximum aantal pagina's (0 = geen limiet)"
+        default: "100"
+
+concurrency:
+  group: leesbare-site
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Playwright installeren
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Modus bepalen
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
+            echo "limit=${{ inputs.limit }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 1 * * 0" ]; then
+            echo "mode=full" >> "$GITHUB_OUTPUT"
+            echo "limit=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=daily" >> "$GITHUB_OUTPUT"
+            echo "limit=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pagina's uitlezen
+        run: python render.py --mode "${{ steps.mode.outputs.mode }}" --limit "${{ steps.mode.outputs.limit }}" --concurrency 5
+
+      - name: Overzicht, llms.txt en sitemap maken
+        run: python generate_discovery.py --sitemap state/sitemap.xml --out site --rendered site
+
+      - name: Wijzigingen opslaan in de repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site state
+          git commit -m "Update ${{ steps.mode.outputs.mode }} $(date -u +%Y-%m-%d)" || echo "Geen wijzigingen"
+          git push
+
+      - name: Publiceren op Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site --project-name=ai-agents-donateursbelangen --branch=main --commit-dirty=true
