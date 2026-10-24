@@ -58,49 +58,187 @@ table{border-collapse:collapse;display:block;overflow-x:auto}td,th{border:1px so
 .bron{color:var(--muted);font-size:.9rem;border-bottom:1px solid var(--line);padding-bottom:.75rem;margin-bottom:1.5rem}
 """
 
-# JavaScript dat in de geladen pagina draait en schone inhoud teruggeeft.
+# JavaScript dat in de volledig geladen pagina draait. Het loopt door de
+# zichtbare pagina (ook door iframes heen), neemt alleen zichtbare tekst mee,
+# zet grafieken om naar tabellen en laat menu, footer, kaarten en plaatjes weg.
 EXTRACT_JS = r"""
 () => {
+  const SKIP = new Set(['SCRIPT','STYLE','NOSCRIPT','TEMPLATE','IMG','PICTURE','VIDEO','AUDIO',
+    'INPUT','SELECT','TEXTAREA','BUTTON','LINK','META','HEADER','FOOTER','NAV','SVG','svg','OBJECT','EMBED']);
+  const KEEP = new Set(['H1','H2','H3','H4','H5','H6','P','UL','OL','LI','TABLE','THEAD','TBODY','TFOOT',
+    'TR','TD','TH','CAPTION','A','STRONG','B','EM','I','BLOCKQUOTE','BR','DL','DT','DD','SUP','SUB']);
+  const SKIP_RE = /leaflet|navbar|cookie|apexcharts-toolbar|highcharts-credits|modal|popup/i;
   const host = location.host;
-  const root = document.body.cloneNode(true);
-  const drop = 'script,style,noscript,template,iframe,svg,canvas,video,audio,' +
-               'form,input,select,textarea,button,link,meta,' +
-               '[aria-hidden="true"],[hidden],[role="dialog"],' +
-               '[id*="cookie" i],[class*="cookie" i]';
-  root.querySelectorAll(drop).forEach(e => e.remove());
-  const keep = new Set(['href','src','alt','title','colspan','rowspan']);
-  root.querySelectorAll('*').forEach(e => {
-    for (const a of [...e.attributes]) if (!keep.has(a.name)) e.removeAttribute(a.name);
-    if (e.tagName === 'A' && e.getAttribute('href')) {
-      try {
-        const u = new URL(e.getAttribute('href'), location.href);
-        if (u.host === host && !u.search) e.setAttribute('href', u.pathname);
-        else e.setAttribute('href', u.href);
-      } catch (_) {}
+  const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const attr = t => esc(String(t)).replace(/"/g,'&quot;');
+  const fmt = v => (v && typeof v === 'object') ? (v.y ?? v.value ?? v.v ?? JSON.stringify(v)) : (v ?? '');
+  const diag = {iframes: [], charts: {}, canvasesZonderData: 0};
+
+  function table(title, labels, series) {
+    if (!series.length) return '';
+    let h = '<table>' + (title ? '<caption>' + esc(String(title)) + '</caption>' : '');
+    h += '<tr><th></th>' + series.map(s => '<th>' + esc(String(s.name || '')) + '</th>').join('') + '</tr>';
+    const n = Math.max(labels.length, ...series.map(s => s.data.length));
+    for (let i = 0; i < n; i++) {
+      h += '<tr><th>' + esc(String(labels[i] ?? '')) + '</th>' +
+           series.map(s => '<td>' + esc(String(fmt(s.data[i]))) + '</td>').join('') + '</tr>';
     }
-    if (e.tagName === 'IMG' && e.getAttribute('src')) {
-      try { e.setAttribute('src', new URL(e.getAttribute('src'), location.href).href); } catch (_) {}
-    }
-  });
-  // div/span/section zonder betekenis uitpakken, zodat er compacte HTML overblijft
-  const unwrap = ['DIV','SPAN','SECTION','ARTICLE','HEADER','FOOTER','NAV','ASIDE','MAIN','FIGURE','PICTURE'];
-  for (let pass = 0; pass < 3; pass++) {
-    root.querySelectorAll(unwrap.join(',')).forEach(e => {
-      if (!e.textContent.trim() && !e.querySelector('img')) { e.remove(); return; }
-      const blocky = e.querySelector('p,h1,h2,h3,h4,h5,h6,ul,ol,table,div,section,article,blockquote');
-      if (e.tagName === 'SPAN' || blocky) e.replaceWith(...e.childNodes);
-      else { const p = document.createElement('p'); p.append(...e.childNodes); e.replaceWith(p); }
-    });
+    return h + '</table>';
   }
+  const count = k => diag.charts[k] = (diag.charts[k] || 0) + 1;
+
+  function chartFromCanvas(c, win) {
+    try {
+      let ch = null;
+      if (win.Chart) {
+        if (win.Chart.getChart) ch = win.Chart.getChart(c);
+        if (!ch && win.Chart.instances) ch = Object.values(win.Chart.instances).find(x => x.canvas === c || (x.chart && x.chart.canvas === c));
+      }
+      if (ch && ch.data) {
+        count('chartjs');
+        const o = ch.options || {};
+        const t = (o.plugins && o.plugins.title && o.plugins.title.text) || (o.title && o.title.text) || '';
+        return table(Array.isArray(t) ? t.join(' ') : t, ch.data.labels || [],
+          (ch.data.datasets || []).map(d => ({name: d.label, data: d.data || []})));
+      }
+    } catch (e) {}
+    return null;
+  }
+  function chartFromContainer(el, win) {
+    try {
+      if (win.echarts && el.getAttribute && el.getAttribute('_echarts_instance_')) {
+        const inst = win.echarts.getInstanceByDom(el);
+        if (inst) {
+          count('echarts');
+          const o = inst.getOption();
+          const x = (o.xAxis && o.xAxis[0] && o.xAxis[0].data) || (o.yAxis && o.yAxis[0] && o.yAxis[0].data) || [];
+          const ser = (o.series || []);
+          if (!x.length && ser[0] && ser[0].data && ser[0].data[0] && ser[0].data[0].name !== undefined) {
+            return table(o.title && o.title[0] && o.title[0].text, ser[0].data.map(d => d.name),
+              ser.map(s => ({name: s.name, data: s.data})));
+          }
+          return table(o.title && o.title[0] && o.title[0].text, x, ser.map(s => ({name: s.name, data: s.data || []})));
+        }
+      }
+      if (win.Highcharts && el.getAttribute && el.getAttribute('data-highcharts-chart') !== null) {
+        const ch = win.Highcharts.charts[+el.getAttribute('data-highcharts-chart')];
+        if (ch) {
+          count('highcharts');
+          const s0 = ch.series[0];
+          const labels = s0 ? s0.points.map(p => p.category ?? p.name) : [];
+          return table(ch.title && ch.title.textStr, labels,
+            ch.series.map(s => ({name: s.name, data: s.points.map(p => p.y)})));
+        }
+      }
+      if (win.Apex && win.Apex._chartInstances && el.classList && el.classList.contains('apexcharts-canvas')) {
+        const inst = win.Apex._chartInstances.find(i => i.chart && i.chart.el && i.chart.el.contains(el));
+        if (inst) {
+          count('apexcharts');
+          const cfg = inst.chart.w.config;
+          let series = cfg.series || [];
+          const labels = (cfg.labels && cfg.labels.length ? cfg.labels : (cfg.xaxis && cfg.xaxis.categories)) || [];
+          series = typeof series[0] === 'number' ? [{name: '', data: series}] : series;
+          return table(cfg.title && cfg.title.text, labels, series.map(s => ({name: s.name, data: s.data || []})));
+        }
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function visible(el) {
+    try {
+      if (el.checkVisibility && !el.checkVisibility({checkOpacity: true, checkVisibilityCSS: true})) return false;
+      const r = el.getBoundingClientRect();
+      return !(r.width === 0 && r.height === 0 && el.tagName !== 'BR');
+    } catch (e) { return true; }
+  }
+
+  function walk(node, win) {
+    if (node.nodeType === 3) return esc(node.textContent.replace(/\s+/g, ' '));
+    if (node.nodeType !== 1) return '';
+    const el = node, tag = el.tagName;
+    if (tag === 'IFRAME') {
+      if (!visible(el)) return '';
+      let doc = null;
+      try { doc = el.contentDocument; } catch (e) {}
+      diag.iframes.push({src: (el.getAttribute('src') || '').slice(0, 120), srcdoc: !!el.getAttribute('srcdoc'), leesbaar: !!(doc && doc.body)});
+      return (doc && doc.body) ? walk(doc.body, el.contentWindow) : '';
+    }
+    if (SKIP.has(tag)) return '';
+    if (/(^|[-_])(header|footer|navbar|nav)\d*$/i.test(el.id || '')) return '';
+    if (SKIP_RE.test((el.id || '') + ' ' + (typeof el.className === 'string' ? el.className : ''))) return '';
+    if (tag === 'CANVAS') {
+      const t = chartFromCanvas(el, win);
+      if (t === null) diag.canvasesZonderData++;
+      return t || '';
+    }
+    const chart = chartFromContainer(el, win);
+    if (chart) return chart;
+    if (!visible(el)) return '';
+    let inner = '';
+    for (const ch of el.childNodes) inner += walk(ch, win);
+    if (KEEP.has(tag)) {
+      if (tag === 'BR') return '<br>';
+      if (!inner.trim()) return '';
+      let a = '';
+      if (tag === 'A' && el.getAttribute('href')) {
+        try {
+          const u = new URL(el.getAttribute('href'), el.ownerDocument.baseURI);
+          a = ' href="' + attr(u.host === host && !u.search ? u.pathname : u.href) + '"';
+        } catch (e) {}
+      }
+      if ((tag === 'TD' || tag === 'TH') && el.getAttribute('colspan')) a = ' colspan="' + attr(el.getAttribute('colspan')) + '"';
+      const t = tag.toLowerCase();
+      return '<' + t + a + '>' + inner.trim() + '</' + t + '>';
+    }
+    if (!inner.trim()) return '';
+    let block = false;
+    try { block = !/^inline/.test(win.getComputedStyle(el).display); } catch (e) {}
+    if (block && !/<(p|h[1-6]|ul|ol|table|dl|blockquote)[ >]/.test(inner)) return '\n<p>' + inner.trim() + '</p>';
+    return block ? '\n' + inner : inner + ' ';
+  }
+
+  let body = walk(document.body, window)
+    .replace(/<p>\s*Loading\.\.\.\s*<\/p>/gi, '')
+    .replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n');
   const desc = document.querySelector('meta[name="description"]');
-  const h1 = root.querySelector('h1');
+  const tmp = document.createElement('div'); tmp.innerHTML = body;
+  const h1 = tmp.querySelector('h1');
   return {
     title: (h1 && h1.textContent.trim()) || document.title || '',
     docTitle: document.title || '',
     description: desc ? desc.content : '',
-    body: root.innerHTML.replace(/\n\s*\n+/g, '\n'),
-    text: root.textContent.replace(/\s+/g, ' ').trim()
+    body: body,
+    text: tmp.textContent.replace(/\s+/g, ' ').trim(),
+    diag: diag
   };
+}
+"""
+
+# Meet hoeveel tekst er zichtbaar is (ook in iframes) en of er nog "Loading..." staat.
+PROGRESS_JS = r"""
+() => {
+  let len = 0, loading = 0;
+  const docs = [document];
+  document.querySelectorAll('iframe').forEach(f => { try { if (f.contentDocument) docs.push(f.contentDocument); } catch (e) {} });
+  for (const d of docs) {
+    const t = (d.body && d.body.innerText) || '';
+    len += t.length;
+    loading += (t.match(/Loading\.\.\./g) || []).length;
+  }
+  return {len, loading, height: document.body.scrollHeight};
+}
+"""
+
+SCROLL_JS = r"""
+async () => {
+  const step = Math.max(400, Math.floor(window.innerHeight * 0.8));
+  for (let y = 0; y < document.body.scrollHeight; y += step) {
+    window.scrollTo(0, y);
+    document.querySelectorAll('iframe').forEach(f => { try { f.contentWindow.scrollTo(0, y); } catch (e) {} });
+    await new Promise(r => setTimeout(r, 250));
+  }
+  window.scrollTo(0, 0);
 }
 """
 
@@ -173,22 +311,39 @@ def build_html(url, data):
 
 
 # ---------------------------------------------------------------------------
-async def render_one(context, url, timeout_ms):
+async def render_one(context, url, timeout_ms, debug_dir=None):
     page = await context.new_page()
     try:
-        await page.goto(url, wait_until="networkidle", timeout=timeout_ms)
-        # langzaam naar beneden scrollen zodat lui geladen blokken verschijnen
-        await page.evaluate("""async () => {
-            for (let y = 0; y < document.body.scrollHeight; y += 800) {
-                window.scrollTo(0, y); await new Promise(r => setTimeout(r, 150));
-            }}""")
-        await page.wait_for_timeout(1000)
-        return await page.evaluate(EXTRACT_JS)
+        await page.goto(url, wait_until="load", timeout=timeout_ms)
+        deadline = time.time() + timeout_ms / 1000
+        # scrollen zodat lui geladen blokken starten, daarna wachten tot de
+        # hoeveelheid tekst 3 seconden gelijk blijft en "Loading..." weg is
+        await page.evaluate(SCROLL_JS)
+        last, stable, scrolled_again, prog = -1, 0, False, {}
+        while time.time() < deadline:
+            await page.wait_for_timeout(1000)
+            prog = await page.evaluate(PROGRESS_JS)
+            stable = stable + 1 if prog["len"] == last else 0
+            last = prog["len"]
+            if stable >= 3 and prog["loading"] == 0:
+                break
+            if stable >= 3 and not scrolled_again:
+                await page.evaluate(SCROLL_JS)
+                scrolled_again, stable = True, 0
+        data = await page.evaluate(EXTRACT_JS)
+        if debug_dir:
+            name = re.sub(r"[^a-zA-Z0-9]+", "_", urlparse(url).path).strip("_") or "home"
+            debug_dir.mkdir(parents=True, exist_ok=True)
+            await page.screenshot(path=str(debug_dir / f"{name}.png"), full_page=True)
+            (debug_dir / f"{name}.json").write_text(json.dumps(
+                {"url": url, "tekst_lengte": len(data["text"]), "diag": data["diag"],
+                 "voortgang": prog}, indent=1, ensure_ascii=False))
+        return data
     finally:
         await page.close()
 
 
-async def render_all(urls, state, concurrency, delay, timeout_ms):
+async def render_all(urls, state, concurrency, delay, timeout_ms, debug_dir=None):
     stats = defaultdict(int)
     failed = []
     queue = asyncio.Queue()
@@ -199,10 +354,12 @@ async def render_all(urls, state, concurrency, delay, timeout_ms):
 
     async with async_playwright() as p:
         browser = await p.chromium.launch()
-        context = await browser.new_context(user_agent=USER_AGENT, locale="nl-NL")
-        # afbeeldingen, lettertypen en video niet laden: scheelt veel tijd
-        await context.route(re.compile(r".*\.(png|jpe?g|gif|webp|avif|svg|woff2?|ttf|mp4|webm)(\?.*)?$", re.I),
-                            lambda route: route.abort())
+        context = await browser.new_context(user_agent=USER_AGENT, locale="nl-NL",
+                                            viewport={"width": 1280, "height": 900})
+        # foto's en video niet laden: scheelt tijd (in debugmodus wel, voor de schermafbeelding)
+        if not debug_dir:
+            await context.route(re.compile(r".*\.(png|jpe?g|gif|webp|avif|mp4|webm)(\?.*)?$", re.I),
+                                lambda route: route.abort())
 
         async def worker():
             while True:
@@ -213,7 +370,7 @@ async def render_all(urls, state, concurrency, delay, timeout_ms):
                 data = None
                 for attempt in range(2):
                     try:
-                        data = await render_one(context, url, timeout_ms)
+                        data = await render_one(context, url, timeout_ms, debug_dir)
                         if len(data["text"]) >= MIN_TEXT:
                             break
                         data = None
@@ -274,11 +431,13 @@ def choose(mode, sitemap, state, limit, seed):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["sample", "daily", "full"], default="daily")
+    ap.add_argument("--mode", choices=["test", "sample", "daily", "full"], default="daily")
+    ap.add_argument("--urls", default="", help="komma-gescheiden URL's voor modus test")
+    ap.add_argument("--debug", action="store_true", help="schermafbeelding en diagnose per pagina in debug/")
     ap.add_argument("--limit", type=int, default=0, help="maximum aantal pagina's (0 = geen)")
     ap.add_argument("--concurrency", type=int, default=4)
     ap.add_argument("--delay", type=float, default=1.0, help="pauze per tab na elke pagina (s)")
-    ap.add_argument("--timeout", type=int, default=45, help="time-out per pagina (s)")
+    ap.add_argument("--timeout", type=int, default=60, help="time-out per pagina (s)")
     ap.add_argument("--sitemap-file", help="lokale sitemap gebruiken in plaats van ophalen")
     a = ap.parse_args()
     if a.mode == "sample" and not a.limit:
@@ -290,7 +449,7 @@ def main():
 
     # pagina's die niet meer in de sitemap staan opruimen (niet bij een proefrun)
     removed = 0
-    if a.mode != "sample":
+    if a.mode in ("daily", "full"):
         for url in [u for u in state if u not in sitemap]:
             f = out_path(url)
             if f.exists():
@@ -298,11 +457,15 @@ def main():
             del state[url]
             removed += 1
 
-    urls = choose(a.mode, sitemap, state, a.limit, seed=datetime.now().strftime("%Y%m%d"))
+    if a.mode == "test":
+        urls = [u.strip() for u in a.urls.split(",") if u.strip()]
+    else:
+        urls = choose(a.mode, sitemap, state, a.limit, seed=datetime.now().strftime("%Y%m%d"))
     print(f"Modus {a.mode}: {len(urls)} pagina's uitlezen, {removed} verwijderd")
 
     t0 = time.time()
-    stats, failed = asyncio.run(render_all(urls, state, a.concurrency, a.delay, a.timeout * 1000))
+    debug_dir = Path("debug") if (a.debug or a.mode == "test") else None
+    stats, failed = asyncio.run(render_all(urls, state, a.concurrency, a.delay, a.timeout * 1000, debug_dir))
     for u in urls:
         if u in state:
             state[u]["lastmod"] = sitemap.get(u, "")
