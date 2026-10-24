@@ -160,15 +160,48 @@ EXTRACT_JS = r"""
     } catch (e) { return true; }
   }
 
+  // Verborgen Softr-gegevensblok (id list-details...) omzetten naar een
+  // nette tabel met jaarcijfers en een lijst met overige gegevens.
+  const LABEL = /^[A-Za-z0-9][A-Za-z0-9_:\-]{1,59}$/;
+  const OVERSLAAN = /^(random|recordid|nonprofits_sd_recordid|seo:|slug_|latitude|longitude|longtitude|logo|dataverrijking|status-aanmelding|link_parent|url_nonprofit_recordid)/i;
+  function dataBlock(el) {
+    const pairs = [], used = new Set();
+    for (const e of el.querySelectorAll('*')) {
+      if (used.has(e) || e.children.length < 2) continue;
+      const first = (e.children[0].textContent || '').trim();
+      if (!LABEL.test(first)) continue;
+      const rest = Array.from(e.children).slice(1).map(c => (c.textContent || '').replace(/\s+/g, ' ').trim())
+                        .filter(t => t && t !== 'Loading...').join(', ');
+      pairs.push([first, rest || '-']);
+      e.querySelectorAll('*').forEach(d => used.add(d));
+    }
+    diag.gegevensvelden = pairs.length;
+    if (pairs.length < 5) return '';
+    const years = ((pairs.find(p => p[0] === 'jaarcijfers_jaartal') || [])[1] || '').split(/,\s*/).filter(Boolean);
+    const rows = [], items = [];
+    for (const [k, v] of pairs) {
+      if (OVERSLAAN.test(k) || k === 'jaarcijfers_jaartal' || v === '-') continue;
+      const parts = v.split(/,\s*/);
+      const naam = esc(k.replace(/[_:]+/g, ' '));
+      if (years.length > 1 && parts.length === years.length && parts.every(x => /^-?\d+(\.\d+)?$/.test(x)))
+        rows.push('<tr><th>' + naam + '</th>' + parts.map(x => '<td>' + esc(x) + '</td>').join('') + '</tr>');
+      else items.push('<dt>' + naam + '</dt><dd>' + esc(v) + '</dd>');
+    }
+    let h = '\n<h2>Gegevens en jaarcijfers</h2>';
+    if (rows.length) h += '<table><tr><th></th>' + years.map(y => '<th>' + esc(y) + '</th>').join('') + '</tr>' + rows.join('') + '</table>';
+    if (items.length) h += '<dl>' + items.join('') + '</dl>';
+    return h;
+  }
+
   function children(el) {
     if (el.tagName === 'SLOT') return el.assignedNodes({flatten: true});
     if (el.shadowRoot) { diag.shadowRoots++; return el.shadowRoot.childNodes; }
     return el.childNodes;
   }
 
-  function walk(node, win) {
+  function walk(node, win, force) {
     if (node.nodeType === 3) return esc(node.textContent.replace(/\s+/g, ' '));
-    if (node.nodeType === 11) { let o = ''; for (const c of node.childNodes) o += walk(c, win); return o; }
+    if (node.nodeType === 11) { let o = ''; for (const c of node.childNodes) o += walk(c, win, force); return o; }
     if (node.nodeType !== 1) return '';
     const el = node, tag = el.tagName;
     if (tag === 'IFRAME') {
@@ -187,11 +220,15 @@ EXTRACT_JS = r"""
     }
     const chart = chartFromContainer(el, win);
     if (chart) return chart;
-    if (!visible(el)) { note(el, 'onzichtbaar'); return ''; }
+    if (!force && !visible(el)) {
+      if (/^list-details/i.test(el.id || '')) return dataBlock(el);
+      if (/collapse|accordion/i.test(typeof el.className === 'string' ? el.className : '')) force = true;
+      else { note(el, 'onzichtbaar'); return ''; }
+    }
     const tc = el.textContent || '';
     if (tag !== 'BODY' && tag !== 'MAIN' && tc.length < 3000 && tc.includes('Alle rechten voorbehouden') && /©\s*20\d\d/.test(tc)) { note(el, 'footer-tekst'); return ''; }
     let inner = '';
-    for (const ch of children(el)) inner += walk(ch, win);
+    for (const ch of children(el)) inner += walk(ch, win, force);
     if (KEEP.has(tag)) {
       if (tag === 'BR') return '<br>';
       if (!inner.trim()) return '';
@@ -213,7 +250,7 @@ EXTRACT_JS = r"""
     return block ? '\n' + inner : inner + ' ';
   }
 
-  let body = walk(document.body, window)
+  let body = walk(document.body, window, false)
     .replace(/<p>\s*(Loading\.\.\.|0\.00)\s*<\/p>/gi, '')
     .replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n');
   const desc = document.querySelector('meta[name="description"]');
