@@ -59,7 +59,7 @@ jobs:
           fi
 
       - name: Pagina's uitlezen
-        run: python render.py --mode "${{ steps.mode.outputs.mode }}" --limit "${{ steps.mode.outputs.limit }}" --urls "${{ inputs.urls }}" --concurrency 5
+        run: python render.py --mode "${{ steps.mode.outputs.mode }}" --limit "${{ steps.mode.outputs.limit }}" --urls "${{ inputs.urls }}" --concurrency 8 --max-minutes 300
 
       - name: Schermafbeeldingen en diagnose bewaren
         if: always()
