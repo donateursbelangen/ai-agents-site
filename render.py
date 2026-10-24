@@ -429,7 +429,7 @@ async def render_one(context, url, timeout_ms, debug_dir=None):
         await page.close()
 
 
-async def render_all(urls, state, concurrency, delay, timeout_ms, debug_dir=None):
+async def render_all(urls, state, concurrency, delay, timeout_ms, debug_dir=None, max_minutes=0):
     stats = defaultdict(int)
     failed = []
     queue = asyncio.Queue()
@@ -449,6 +449,11 @@ async def render_all(urls, state, concurrency, delay, timeout_ms, debug_dir=None
 
         async def worker():
             while True:
+                if max_minutes and time.time() - started > max_minutes * 60:
+                    if not stats.get("_stop_gemeld"):
+                        stats["_stop_gemeld"] = 1
+                        print(f"Tijdslimiet van {max_minutes} min bereikt; de rest volgt bij de volgende run.", flush=True)
+                    return
                 try:
                     url = queue.get_nowait()
                 except asyncio.QueueEmpty:
@@ -481,7 +486,7 @@ async def render_all(urls, state, concurrency, delay, timeout_ms, debug_dir=None
                         entry["changed"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
                     entry["rendered"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
                     state[url] = entry
-                done = sum(stats.values())
+                done = sum(v for k, v in stats.items() if not k.startswith("_"))
                 if done % 50 == 0 or done == total:
                     rate = done / max(time.time() - started, 1)
                     print(f"{done}/{total} klaar ({rate:.2f} p/s) {dict(stats)}", flush=True)
@@ -494,7 +499,9 @@ async def render_all(urls, state, concurrency, delay, timeout_ms, debug_dir=None
 
 def choose(mode, sitemap, state, limit, seed):
     if mode == "full":
-        urls = list(sitemap)
+        # nooit of het langst geleden uitgelezen pagina's eerst, zodat een
+        # afgebroken run de volgende keer verder gaat waar hij was
+        urls = sorted(sitemap, key=lambda u: state.get(u, {}).get("rendered", ""))
     elif mode == "daily":
         urls = [u for u, lm in sitemap.items()
                 if u not in state or (lm and lm != state[u].get("lastmod"))
@@ -524,6 +531,7 @@ def main():
     ap.add_argument("--concurrency", type=int, default=4)
     ap.add_argument("--delay", type=float, default=1.0, help="pauze per tab na elke pagina (s)")
     ap.add_argument("--timeout", type=int, default=60, help="time-out per pagina (s)")
+    ap.add_argument("--max-minutes", type=int, default=0, help="stop netjes na zoveel minuten (0 = geen limiet)")
     ap.add_argument("--sitemap-file", help="lokale sitemap gebruiken in plaats van ophalen")
     a = ap.parse_args()
     if a.mode == "sample" and not a.limit:
@@ -554,7 +562,8 @@ def main():
 
     t0 = time.time()
     debug_dir = Path("debug") if (a.debug or a.mode == "test") else None
-    stats, failed = asyncio.run(render_all(urls, state, a.concurrency, a.delay, a.timeout * 1000, debug_dir))
+    stats, failed = asyncio.run(render_all(urls, state, a.concurrency, a.delay, a.timeout * 1000, debug_dir, a.max_minutes))
+    stats.pop("_stop_gemeld", None)
     for u in urls:
         if u in state:
             state[u]["lastmod"] = sitemap.get(u, "")
