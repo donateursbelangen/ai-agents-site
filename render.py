@@ -444,6 +444,9 @@ def main():
         a.limit = 100
 
     state = json.loads(STATE_FILE.read_text()) if STATE_FILE.exists() else {}
+    if a.mode == "test" and not a.sitemap_file and Path("state/sitemap.xml").exists():
+        a.sitemap_file = "state/sitemap.xml"
+    print("Sitemap ophalen...", flush=True)
     sitemap = fetch_sitemap(SITEMAP_URL, a.sitemap_file)
     print(f"Sitemap: {len(sitemap)} pagina's")
 
