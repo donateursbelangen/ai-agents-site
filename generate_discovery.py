@@ -292,6 +292,12 @@ def main():
     for key, items in detail.items():
         (out / "overzicht" / f"{key}.html").write_text(build_type_page(key, items), encoding="utf-8")
     (out / "llms.txt").write_text(build_llms(detail, single), encoding="utf-8")
+    (out / "404.html").write_text(page(
+        "Pagina niet gevonden – " + SITE_NAME,
+        '<h1>Deze pagina is (nog) niet beschikbaar</h1>'
+        '<p>Van deze pagina is nog geen leesbare kopie gemaakt. Bekijk het origineel op '
+        f'<a href="{WWW}">www.donateursbelangen.nl</a> of ga naar het <a href="/">overzicht</a>.</p>',
+        WWW + "/"), encoding="utf-8")
     sm, n = build_sitemap(detail, single)
     (out / "sitemap.xml").write_text(sm, encoding="utf-8")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {AI}/sitemap.xml\n",
