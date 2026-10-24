@@ -68,7 +68,7 @@ EXTRACT_JS = r"""
     'FORM','LABEL']);
   const KEEP = new Set(['H1','H2','H3','H4','H5','H6','P','UL','OL','LI','TABLE','THEAD','TBODY','TFOOT',
     'TR','TD','TH','CAPTION','A','STRONG','B','EM','I','BLOCKQUOTE','BR','DL','DT','DD','SUP','SUB']);
-  const SKIP_RE = /leaflet|navbar|cookie|apexcharts-toolbar|highcharts-credits|modal|popup/i;
+  const SKIP_RE = /leaflet|navbar|cookie|apexcharts-toolbar|highcharts-credits|modal|popup|lightbox/i;
   const host = location.host;
   const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const attr = t => esc(String(t)).replace(/"/g,'&quot;');
@@ -406,13 +406,13 @@ async def render_one(context, url, timeout_ms, debug_dir=None):
         await page.evaluate(SCROLL_JS)
         last, stable, scrolled_again, prog, expand = -1, 0, False, {}, {}
         while time.time() < deadline:
-            await page.wait_for_timeout(1000)
+            await page.wait_for_timeout(700)
             prog = await page.evaluate(PROGRESS_JS)
             stable = stable + 1 if prog["len"] == last else 0
             last = prog["len"]
-            if stable >= 3 and prog["loading"] == 0:
+            if stable >= 3 and prog["loading"] == 0 and scrolled_again:
                 break
-            if stable >= 3 and not scrolled_again:
+            if stable >= 2 and not scrolled_again:
                 expand = await page.evaluate(EXPAND_JS)
                 await page.evaluate(SCROLL_JS)
                 scrolled_again, stable = True, 0
@@ -461,7 +461,7 @@ async def render_all(urls, state, concurrency, delay, timeout_ms, debug_dir=None
                             break
                         data = None
                     except Exception as e:
-                        print(f"  fout ({attempt + 1}) {url}: {e.__class__.__name__}", flush=True)
+                        print(f"  fout ({attempt + 1}) {url}: {e.__class__.__name__}: {str(e).splitlines()[0][:160] if str(e) else ''}", flush=True)
                     await asyncio.sleep(3)
                 if data is None:
                     stats["mislukt"] += 1
