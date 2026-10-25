@@ -197,6 +197,7 @@ def page(title, body, canonical):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{html.escape(title)}</title>
+<meta name="googlebot" content="noindex">
 <link rel="canonical" href="{canonical}">
 <style>{CSS}</style>
 </head>
@@ -300,6 +301,9 @@ def main():
         WWW + "/"), encoding="utf-8")
     sm, n = build_sitemap(detail, single)
     (out / "sitemap.xml").write_text(sm, encoding="utf-8")
+    # Google mag het subdomein niet indexeren; geldt voor alle bestanden.
+    # Andere crawlers en AI-agents worden hier niet door beperkt.
+    (out / "_headers").write_text("/*\n  X-Robots-Tag: googlebot: noindex\n", encoding="utf-8")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {AI}/sitemap.xml\n",
                                     encoding="utf-8")
 
