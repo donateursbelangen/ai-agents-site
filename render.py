@@ -382,7 +382,8 @@ def build_html(url, data):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(head_title)}</title>
-{desc}<link rel="canonical" href="{html.escape(url)}">
+{desc}<meta name="googlebot" content="noindex">
+<link rel="canonical" href="{html.escape(url)}">
 <style>{CSS}</style>
 </head>
 <body>
