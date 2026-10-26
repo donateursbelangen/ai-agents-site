@@ -459,23 +459,33 @@ async def render_all(urls, state, concurrency, delay, timeout_ms, debug_dir=None
                     url = queue.get_nowait()
                 except asyncio.QueueEmpty:
                     return
-                data = None
+                data, short = None, None
                 for attempt in range(2):
                     try:
-                        data = await render_one(context, url, timeout_ms, debug_dir)
-                        if len(data["text"]) >= MIN_TEXT:
+                        got = await render_one(context, url, timeout_ms, debug_dir)
+                        if len(got["text"]) >= MIN_TEXT:
+                            data = got
                             break
-                        data = None
+                        short = got
+                        print(f"  te weinig tekst ({attempt + 1}, {len(got['text'])} tekens) {url}", flush=True)
                     except Exception as e:
                         print(f"  fout ({attempt + 1}) {url}: {e.__class__.__name__}: {str(e).splitlines()[0][:160] if str(e) else ''}", flush=True)
                     await asyncio.sleep(3)
+                entry = state.get(url, {})
+                # Een pagina die meerdere runs achter elkaar weinig tekst geeft,
+                # is waarschijnlijk echt zo kort: dan toch opslaan.
+                if data is None and short is not None and short["text"] and entry.get("fails", 0) >= 2:
+                    data = short
+                    print(f"  korte pagina toch opgeslagen: {url}", flush=True)
                 if data is None:
                     stats["mislukt"] += 1
                     failed.append(url)
+                    entry["fails"] = entry.get("fails", 0) + 1
+                    state[url] = entry
                 else:
+                    entry.pop("fails", None)
                     doc = build_html(url, data)
                     digest = hashlib.sha256(data["body"].encode()).hexdigest()
-                    entry = state.get(url, {})
                     f = out_path(url)
                     if entry.get("hash") == digest and f.exists():
                         stats["ongewijzigd"] += 1
@@ -578,7 +588,11 @@ def main():
 
     mins = (time.time() - t0) / 60
     print(f"Klaar in {mins:.1f} min: {dict(stats)}, verwijderd {removed}")
-    if urls and stats["mislukt"] > 0.2 * len(urls):
+    if failed:
+        print("Mislukt: " + ", ".join(failed[:20]), flush=True)
+    # Alleen bij grote runs met veel fouten de run als mislukt markeren;
+    # een enkele lastige pagina mag het publiceren nooit tegenhouden.
+    if len(urls) >= 50 and stats["mislukt"] > 0.2 * len(urls):
         print("Meer dan 20% mislukt; controleer de log.", file=sys.stderr)
         sys.exit(1)
 
