@@ -30,7 +30,7 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Opzeggen per brief](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-brief): Per goed doel hulp bij het opzeggen van een donatie per brief. 1531 pagina's.
 - [Communicatievoorkeuren](https://ai-agents.donateursbelangen.nl/overzicht/communicatievoorkeuren): Per organisatie informatie over het doorgeven van communicatievoorkeuren. 1510 pagina's.
 - [Nieuws](https://ai-agents.donateursbelangen.nl/overzicht/nieuws-details): Nieuwsberichten. 798 pagina's.
-- [Blog](https://ai-agents.donateursbelangen.nl/overzicht/blogitem): Blogartikelen. 190 pagina's.
+- [Blog](https://ai-agents.donateursbelangen.nl/overzicht/blogitem): Blogartikelen. 191 pagina's.
 - [Signalen](https://ai-agents.donateursbelangen.nl/overzicht/signaal): Signalen over praktijken in de goededoelensector. 66 pagina's.
 - [Stakeholders](https://ai-agents.donateursbelangen.nl/overzicht/stakeholder): Organisaties en partijen in de goededoelensector. 41 pagina's.
 

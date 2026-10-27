@@ -881,6 +881,12 @@
   "lastmod": "",
   "rendered": "2026-10-25T09:28:46+00:00"
  },
+ "https://www.donateursbelangen.nl/blogitem/podcast-aflevering-45-lenie-t-hart-zeehondencentrum-pieterburen/r/hIVq6WEojYdPAr": {
+  "changed": "2026-10-27T08:48:41+00:00",
+  "hash": "12025c06a93b85d1a2c9f3330153a3f84d8a8ea425313c9dbc93c9aee9147548",
+  "lastmod": "",
+  "rendered": "2026-10-27T08:48:41+00:00"
+ },
  "https://www.donateursbelangen.nl/blogitem/podcast-aflevering-6-ethische-fondsenwerving/r/28149CzxHRMPAe": {
   "changed": "2026-10-24T18:38:02+00:00",
   "hash": "283faa203b3ee1997c50fdc0a8bea7a5d8017613b68e0be17d33cee1823cb139",
@@ -1212,7 +1218,7 @@
   "rendered": "2026-10-25T05:40:06+00:00"
  },
  "https://www.donateursbelangen.nl/column": {
-  "fails": 1,
+  "fails": 2,
   "lastmod": "2026-09-01"
  },
  "https://www.donateursbelangen.nl/columns": {
@@ -52156,10 +52162,10 @@
   "rendered": "2026-10-25T05:38:39+00:00"
  },
  "https://www.donateursbelangen.nl/podcast": {
-  "changed": "2026-10-24T14:49:26+00:00",
-  "hash": "e7c095097eee96d6900f20b6834667400ad06b68e5696573cb355d8d9c6a48e5",
-  "lastmod": "2026-10-22",
-  "rendered": "2026-10-25T05:39:01+00:00"
+  "changed": "2026-10-27T08:48:47+00:00",
+  "hash": "7021d0667bd99fa7827a8596f034641faee107caab028d9fef1591f370a60c13",
+  "lastmod": "2026-10-26",
+  "rendered": "2026-10-27T08:48:47+00:00"
  },
  "https://www.donateursbelangen.nl/position-paper-de-donateur-is-consument-geworden": {
   "changed": "2026-10-24T14:49:17+00:00",
