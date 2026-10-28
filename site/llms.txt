@@ -24,13 +24,12 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 
 ## Overzichten per paginatype
 
-- [Goede doelen](https://ai-agents.donateursbelangen.nl/overzicht/goede-doel): Een profielpagina per goed doel. 1531 pagina's.
 - [Nonprofitorganisaties](https://ai-agents.donateursbelangen.nl/overzicht/nonprofit): Een pagina per nonprofitorganisatie. 1510 pagina's.
 - [Opzeggen per e-mail](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-email): Per goed doel hulp bij het opzeggen van een donatie per e-mail. 1531 pagina's.
 - [Opzeggen per brief](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-brief): Per goed doel hulp bij het opzeggen van een donatie per brief. 1531 pagina's.
 - [Communicatievoorkeuren](https://ai-agents.donateursbelangen.nl/overzicht/communicatievoorkeuren): Per organisatie informatie over het doorgeven van communicatievoorkeuren. 1510 pagina's.
-- [Nieuws](https://ai-agents.donateursbelangen.nl/overzicht/nieuws-details): Nieuwsberichten. 798 pagina's.
-- [Blog](https://ai-agents.donateursbelangen.nl/overzicht/blogitem): Blogartikelen. 191 pagina's.
+- [Nieuws](https://ai-agents.donateursbelangen.nl/overzicht/nieuws-details): Nieuwsberichten. 799 pagina's.
+- [Blog](https://ai-agents.donateursbelangen.nl/overzicht/blogitem): Blogartikelen. 193 pagina's.
 - [Signalen](https://ai-agents.donateursbelangen.nl/overzicht/signaal): Signalen over praktijken in de goededoelensector. 66 pagina's.
 - [Stakeholders](https://ai-agents.donateursbelangen.nl/overzicht/stakeholder): Organisaties en partijen in de goededoelensector. 41 pagina's.
 
@@ -45,7 +44,7 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Betaalvormen en toegang tot banken](https://ai-agents.donateursbelangen.nl/betaalvormen-banken)
 - [Blog - Stichting Donateursbelangen](https://ai-agents.donateursbelangen.nl/blog)
 - [Callcenters](https://ai-agents.donateursbelangen.nl/callcenters)
-- [Column](https://ai-agents.donateursbelangen.nl/column)
+- [Column - Stichting Donateursbelangen](https://ai-agents.donateursbelangen.nl/column)
 - [Columns](https://ai-agents.donateursbelangen.nl/columns)
 - [Contact met Stichting Donateursbelangen](https://ai-agents.donateursbelangen.nl/contact)
 - [Cookies](https://ai-agents.donateursbelangen.nl/cookies)
@@ -59,6 +58,7 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [De onderzoeken van Stichting Donateursbelangen zijn onafhankelijk, objectief en relevant.](https://ai-agents.donateursbelangen.nl/onafhankelijk-platform-over-geven)
 - [Deelnemers loterij donateur of uit op geld ?](https://ai-agents.donateursbelangen.nl/loterijen)
 - [Deur-aan-deur Fondsenwerving: Onderzoek en Trends](https://ai-agents.donateursbelangen.nl/onderzoek-deur-aan-deur)
+- [Dierenambulance Gooi en Vechtstreek](https://ai-agents.donateursbelangen.nl/goede-doel)
 - [Donateurs aan het woord](https://ai-agents.donateursbelangen.nl/donateurs-aan-het-woord)
 - [Donatie is een gift](https://ai-agents.donateursbelangen.nl/gift)
 - [Doneer Effectief](https://ai-agents.donateursbelangen.nl/doneer-effectief)
@@ -110,6 +110,7 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Opzegservice](https://ai-agents.donateursbelangen.nl/donateurs)
 - [Overzicht van alle goede doelen week acties en organisaties per plaats in Nederland](https://ai-agents.donateursbelangen.nl/goede-doelen-weken)
 - [Participantvoorwaarden](https://ai-agents.donateursbelangen.nl/participantvoorwaarden)
+- [Petities](https://ai-agents.donateursbelangen.nl/petities)
 - [Podcast Donateursbelangen over MyCompassion](https://ai-agents.donateursbelangen.nl/dossier-mijn-donateur-omgeving)
 - [Position Paper & standpunt Donateursbelangen](https://ai-agents.donateursbelangen.nl/position-paper-de-donateur-is-consument-geworden)
 - [Post van goede doelen](https://ai-agents.donateursbelangen.nl/post-van-goede-doelen)
