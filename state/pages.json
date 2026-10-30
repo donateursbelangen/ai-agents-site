@@ -1,9 +1,9 @@
 {
  "https://www.donateursbelangen.nl/": {
-  "changed": "2026-10-24T14:49:36+00:00",
-  "hash": "2a36ecf70fcedf48a574166845bde0439e4c75fc075035413c1599e69911cc6b",
-  "lastmod": "2026-10-23",
-  "rendered": "2026-10-25T05:39:11+00:00"
+  "changed": "2026-10-30T09:47:17+00:00",
+  "hash": "99f845dc784d0f633252ca900767a4e3c74d8b7589378f9ecaee946d90baba14",
+  "lastmod": "2026-10-30",
+  "rendered": "2026-10-30T09:47:17+00:00"
  },
  "https://www.donateursbelangen.nl/aansluiten": {
   "changed": "2026-10-24T14:50:32+00:00",
@@ -20104,6 +20104,12 @@
   "hash": "ae790da933c7c0c0cd56dd055e240911e16e9bdbea11a25877658c977bd5bdda",
   "lastmod": "",
   "rendered": "2026-10-25T09:41:53+00:00"
+ },
+ "https://www.donateursbelangen.nl/nieuws-details/alle-342-gemeenten-aangesloten-bij-uniek-sporten/r/mcQdyUKD3R7zV3": {
+  "changed": "2026-10-30T09:47:11+00:00",
+  "hash": "8ef5e117049563c2e22a6537dedd7df14cf311eca2fac8bf51b6e3f8ac0662fa",
+  "lastmod": "",
+  "rendered": "2026-10-30T09:47:11+00:00"
  },
  "https://www.donateursbelangen.nl/nieuws-details/alle-giften-aan-goede-doelen-in-2025-op-de-valreep-minder-fiscaal-aftrekbaar-in-belgie/r/kphbmFK7CSS2qD": {
   "changed": "2026-10-24T18:48:29+00:00",
@@ -53052,9 +53058,9 @@
   "rendered": "2026-10-25T05:34:58+00:00"
  },
  "https://www.donateursbelangen.nl/woordenlijst": {
-  "changed": "2026-10-24T14:50:17+00:00",
-  "hash": "7c96c3c60a362c91f307c02d60c55b4a3473a30156b4c4335dda04e732e7379c",
-  "lastmod": "2025-09-29",
-  "rendered": "2026-10-25T05:39:35+00:00"
+  "changed": "2026-10-30T09:47:18+00:00",
+  "hash": "9fc78cd80655021f642a93aa600b11fc5f759e0faef689ea8603d2ab2e8b3eab",
+  "lastmod": "2026-10-29",
+  "rendered": "2026-10-30T09:47:18+00:00"
  }
 }
