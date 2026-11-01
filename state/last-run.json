@@ -1,9 +1,15 @@
 {
- "mode": "daily",
- "datum": "2026-10-31T09:26:19+00:00",
- "duur_min": 0.0,
- "pagina's": 0,
- "resultaat": {},
+ "mode": "full",
+ "datum": "2026-11-01T11:13:14+00:00",
+ "duur_min": 249.8,
+ "pagina's": 8853,
+ "resultaat": {
+  "bijgewerkt": 2987,
+  "ongewijzigd": 5865,
+  "mislukt": 1
+ },
  "verwijderd": 0,
- "mislukt": []
+ "mislukt": [
+  "https://www.donateursbelangen.nl/column"
+ ]
 }
