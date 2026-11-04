@@ -12,11 +12,13 @@
 <url><loc>https://ai-agents.donateursbelangen.nl/overzicht/stakeholder</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/goede-doelen-lijst</loc><lastmod>2026-09-12</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/externe-bronnen</loc><lastmod>2025-09-29</lastmod></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai</loc><lastmod>2026-11-04</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/dossiers</loc><lastmod>2025-11-18</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/meldpunt</loc><lastmod>2026-07-02</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/jaaroverzicht-2025</loc><lastmod>2025-12-22</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/anbi</loc><lastmod>2026-09-20</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/dossier-betalingslandschap</loc><lastmod>2025-09-29</lastmod></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai-gemini</loc><lastmod>2026-11-04</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/privacy</loc><lastmod>2025-09-29</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/donateurs</loc><lastmod>2025-12-18</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/privacyschending</loc><lastmod>2025-09-29</lastmod></url>
@@ -46,17 +48,21 @@
 <url><loc>https://ai-agents.donateursbelangen.nl/campagne-bij-de-lokale-omroep</loc><lastmod>2025-11-11</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/beleidsplan</loc><lastmod>2025-12-21</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/communicatievoorkeuren-goede-doelen</loc><lastmod>2025-09-29</lastmod></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/ai-campagne</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/databases</loc><lastmod>2026-09-20</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/blog</loc><lastmod>2026-10-14</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/online-fondsenwerving</loc><lastmod>2025-09-29</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/donateursbelangen-badge</loc><lastmod>2025-09-29</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/doneren-via-iban</loc><lastmod>2026-01-05</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/donatieplatformen</loc><lastmod>2025-09-29</lastmod></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai-claude</loc><lastmod>2026-11-04</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/participantvoorwaarden</loc><lastmod>2025-09-29</lastmod></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai-chatgpt</loc><lastmod>2026-11-04</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzegservice-donateurschap-via-email</loc><lastmod>2026-02-01</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/podcast</loc><lastmod>2026-10-26</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/mijn-donateur-omgeving-missie-nederland</loc><lastmod>2025-09-29</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/position-paper-de-donateur-is-consument-geworden</loc><lastmod>2026-03-14</lastmod></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai-copilot</loc><lastmod>2026-11-04</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/fondsenwerving</loc><lastmod>2025-09-29</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/whatsapp</loc><lastmod>2025-09-29</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/in-de-schijnwerpers</loc><lastmod>2025-10-28</lastmod></url>
@@ -64,7 +70,7 @@
 <url><loc>https://ai-agents.donateursbelangen.nl/column</loc><lastmod>2026-09-01</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzegservice</loc><lastmod>2026-01-19</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/doe-mee</loc><lastmod>2025-09-29</lastmod></url>
-<url><loc>https://ai-agents.donateursbelangen.nl/home</loc><lastmod>2026-10-30</lastmod></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/home</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/goededoelensector</loc><lastmod>2026-02-20</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/datagedreven-fondsenwerving</loc><lastmod>2025-12-23</lastmod></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/geefkringen</loc><lastmod>2025-09-29</lastmod></url>
@@ -1322,6 +1328,7 @@
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-email/rust-in-uitvoering/r/bKNBGTn9avbV9Y</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-email/stichting-ruta/r/BOm8D5aArZkNJN</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-email/regis-deleuze/r/HN9DZHCGHpIfrf</loc></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-email/saeckenborgh-expo/r/XV6Yo1edjune9Z</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-email/safetynet/r/B3d1YAbdTR0p3z</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-email/stichting-sako/r/Vhzo0MliMr0QTe</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-email/stichting-sam-welzijn/r/Voaaved57vvjxW</loc></url>
@@ -4372,6 +4379,7 @@
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-brief/rust-in-uitvoering/r/bKNBGTn9avbV9Y</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-brief/stichting-ruta/r/BOm8D5aArZkNJN</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-brief/regis-deleuze/r/HN9DZHCGHpIfrf</loc></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-brief/saeckenborgh-expo/r/XV6Yo1edjune9Z</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-brief/safetynet/r/B3d1YAbdTR0p3z</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-brief/stichting-sako/r/Vhzo0MliMr0QTe</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/opzeggen-goed-doel-per-brief/stichting-sam-welzijn/r/Voaaved57vvjxW</loc></url>
@@ -5915,6 +5923,7 @@
 <url><loc>https://ai-agents.donateursbelangen.nl/goede-doel/rust-in-uitvoering/r/bKNBGTn9avbV9Y</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/goede-doel/stichting-ruta/r/BOm8D5aArZkNJN</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/goede-doel/regis-deleuze/r/HN9DZHCGHpIfrf</loc></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/goede-doel/saeckenborgh-expo/r/XV6Yo1edjune9Z</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/goede-doel/safetynet/r/B3d1YAbdTR0p3z</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/goede-doel/stichting-sako/r/Vhzo0MliMr0QTe</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/goede-doel/stichting-sam-welzijn/r/Voaaved57vvjxW</loc></url>
@@ -8745,6 +8754,7 @@
 <url><loc>https://ai-agents.donateursbelangen.nl/nieuws-details/het-is-goed-verdienen-aan-het-goede-doel/r/NS0Bl0zWAy5VJL</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/nieuws-details/vlamingen-lieten-vorig-jaar-weer-meer-geld-na-aan-goede-doelen/r/Vp6Jkh2v4v2cYx</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/nieuws-details/vluchtelingenwerk-nederland-discrimineerde-medewerker-op-grond-van-politieke-gezindheid/r/iR52AS5h0KoIwb</loc></url>
+<url><loc>https://ai-agents.donateursbelangen.nl/nieuws-details/vluchtelingenwerk-nederland-presenteert-nieuw-logo-nieuwe-huisstijl/r/4E5dEhIETBALlL</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/nieuws-details/voedselbank-waarschuwt-voor-nepcollectanten-in-drenthe/r/BMmb0G1xTq4Mlf</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/nieuws-details/voedselbank-waarschuwt-voor-nep-collectanten-wij-collecteren-nooit-aan-deur/r/GV2BPnbc5qwoqs</loc></url>
 <url><loc>https://ai-agents.donateursbelangen.nl/nieuws-details/volgens-dnb-vormen-non-profits-een-hoog-risico-op-witwassen-en-terrorismefinanciering/r/0zZydyb0B29lpt</loc></url>

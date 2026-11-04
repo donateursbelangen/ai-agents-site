@@ -24,12 +24,12 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 
 ## Overzichten per paginatype
 
-- [Goede doelen](https://ai-agents.donateursbelangen.nl/overzicht/goede-doel): Een profielpagina per goed doel. 1540 pagina's.
+- [Goede doelen](https://ai-agents.donateursbelangen.nl/overzicht/goede-doel): Een profielpagina per goed doel. 1541 pagina's.
 - [Nonprofitorganisaties](https://ai-agents.donateursbelangen.nl/overzicht/nonprofit): Een pagina per nonprofitorganisatie. 1510 pagina's.
-- [Opzeggen per e-mail](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-email): Per goed doel hulp bij het opzeggen van een donatie per e-mail. 1540 pagina's.
-- [Opzeggen per brief](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-brief): Per goed doel hulp bij het opzeggen van een donatie per brief. 1540 pagina's.
+- [Opzeggen per e-mail](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-email): Per goed doel hulp bij het opzeggen van een donatie per e-mail. 1541 pagina's.
+- [Opzeggen per brief](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-brief): Per goed doel hulp bij het opzeggen van een donatie per brief. 1541 pagina's.
 - [Communicatievoorkeuren](https://ai-agents.donateursbelangen.nl/overzicht/communicatievoorkeuren): Per organisatie informatie over het doorgeven van communicatievoorkeuren. 1510 pagina's.
-- [Nieuws](https://ai-agents.donateursbelangen.nl/overzicht/nieuws-details): Nieuwsberichten. 804 pagina's.
+- [Nieuws](https://ai-agents.donateursbelangen.nl/overzicht/nieuws-details): Nieuwsberichten. 805 pagina's.
 - [Blog](https://ai-agents.donateursbelangen.nl/overzicht/blogitem): Blogartikelen. 195 pagina's.
 - [Signalen](https://ai-agents.donateursbelangen.nl/overzicht/signaal): Signalen over praktijken in de goededoelensector. 66 pagina's.
 - [Stakeholders](https://ai-agents.donateursbelangen.nl/overzicht/stakeholder): Organisaties en partijen in de goededoelensector. 41 pagina's.
@@ -39,6 +39,7 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [100% Gratis & privacyvriendelijke opzegservice](https://ai-agents.donateursbelangen.nl/opzeggen-donatie)
 - [4non-profit community](https://ai-agents.donateursbelangen.nl/kostenbesparing)
 - [Aanmeldingsformulier](https://ai-agents.donateursbelangen.nl/aansluiten)
+- [AI schrijft snel. Maar wie denkt er mee namens de gever?](https://ai-agents.donateursbelangen.nl/ai-campagne)
 - [Alle CBF-Erkende organisaties](https://ai-agents.donateursbelangen.nl/cbf-register)
 - [Alles over ANBI Status: Voordelen en Criteria - Algemeen Nut Beogende Instellingen](https://ai-agents.donateursbelangen.nl/anbi)
 - [APV Gemeenten m.b.t. collecteren](https://ai-agents.donateursbelangen.nl/gemeenten-apv)
@@ -93,12 +94,17 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Inzicht in Kosten bij Donaties: Direct & Indirect](https://ai-agents.donateursbelangen.nl/directe-kosten-verbonden-aan-doneren)
 - [Jaaroverzicht 2025](https://ai-agents.donateursbelangen.nl/jaaroverzicht-2025)
 - [Jouw nalatenschap](https://ai-agents.donateursbelangen.nl/nalatenschappen)
+- [Laat ChatGPT meedenken namens de donateur](https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai-chatgpt)
+- [Laat Claude meedenken namens de donateur](https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai-claude)
+- [Laat Copilot meedenken namens de donateur](https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai-copilot)
+- [Laat Gemini meedenken namens de donateur](https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai-gemini)
 - [Lidmaatschapsvoorwaarden donateursbelangen](https://ai-agents.donateursbelangen.nl/lidmaatschapsvoorwaarden)
 - [Lokale Goededoelengids NL](https://ai-agents.donateursbelangen.nl/lokale-goededoelen)
 - [Loterijstelsel](https://ai-agents.donateursbelangen.nl/loterijstelsel)
 - [Martje Nooij](https://ai-agents.donateursbelangen.nl/keuze-goed-doel)
 - [Meer informatie](https://ai-agents.donateursbelangen.nl/toezicht-goede-doelen-via-zelfregulering)
 - [Meld je aan bij onze donateursbelangen Whatsapp community](https://ai-agents.donateursbelangen.nl/community)
+- [Met welke AI werk jij?](https://ai-agents.donateursbelangen.nl/ai-campagne-kies-je-ai)
 - [Mijn Donateur omgeving Missie Nederland](https://ai-agents.donateursbelangen.nl/mijn-donateur-omgeving-missie-nederland)
 - [Mijn eenmalige gift](https://ai-agents.donateursbelangen.nl/mijn-eenmalige-gift)
 - [Na donatie afschrijving door een Stichting Derdengelden?](https://ai-agents.donateursbelangen.nl/stichting-derdengelden)

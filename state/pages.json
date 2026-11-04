@@ -1,15 +1,51 @@
 {
  "https://www.donateursbelangen.nl/": {
-  "changed": "2026-11-01T11:13:12+00:00",
-  "hash": "39042167d2eb896ff9bb886b1aa0fc6761e09fc2c77129337fe9181c22c2b90d",
-  "lastmod": "2026-10-30",
-  "rendered": "2026-11-01T11:13:12+00:00"
+  "changed": "2026-11-04T10:41:40+00:00",
+  "hash": "1a1fe87cc0d7982b6371e0fab563afd6b261dca1c8051e4fca2b1904d579770e",
+  "lastmod": "2026-11-03",
+  "rendered": "2026-11-04T10:41:40+00:00"
  },
  "https://www.donateursbelangen.nl/aansluiten": {
   "changed": "2026-10-24T14:50:32+00:00",
   "hash": "17a0a2c7f2dcf0518de51286c2ea5688530861f88dedbd6f3ae8bf68ad691d09",
   "lastmod": "2025-09-29",
   "rendered": "2026-11-01T07:07:51+00:00"
+ },
+ "https://www.donateursbelangen.nl/ai-campagne": {
+  "changed": "2026-11-04T10:41:03+00:00",
+  "hash": "5f50791a9f0e10006c71e19431f4475cb9e3d98afc0dd7aa3b647536ad97f2df",
+  "lastmod": "2026-11-03",
+  "rendered": "2026-11-04T10:41:03+00:00"
+ },
+ "https://www.donateursbelangen.nl/ai-campagne-kies-je-ai": {
+  "changed": "2026-11-04T10:41:02+00:00",
+  "hash": "9ee0eb80067370858a76124e4e6690fa75ddc95d748dfad9e755c3b0e69b67d7",
+  "lastmod": "2026-11-04",
+  "rendered": "2026-11-04T10:41:02+00:00"
+ },
+ "https://www.donateursbelangen.nl/ai-campagne-kies-je-ai-chatgpt": {
+  "changed": "2026-11-04T10:41:03+00:00",
+  "hash": "ea8ec924a2a7918a5d6be21276629ea8e41ea1ccec0c2ad1592a85c2747150cf",
+  "lastmod": "2026-11-04",
+  "rendered": "2026-11-04T10:41:03+00:00"
+ },
+ "https://www.donateursbelangen.nl/ai-campagne-kies-je-ai-claude": {
+  "changed": "2026-11-04T10:41:02+00:00",
+  "hash": "52804117cd3cdd0d14e2ab2a6624324ad4d728475d84d227d6589e99ea1cebc2",
+  "lastmod": "2026-11-04",
+  "rendered": "2026-11-04T10:41:02+00:00"
+ },
+ "https://www.donateursbelangen.nl/ai-campagne-kies-je-ai-copilot": {
+  "changed": "2026-11-04T10:41:03+00:00",
+  "hash": "e759ecb1a13f97c11cea1e812266b573b1cf05d51bdb5acc603e0166ff500925",
+  "lastmod": "2026-11-04",
+  "rendered": "2026-11-04T10:41:03+00:00"
+ },
+ "https://www.donateursbelangen.nl/ai-campagne-kies-je-ai-gemini": {
+  "changed": "2026-11-04T10:41:02+00:00",
+  "hash": "3508726d618dd908b94f429f3083b7d8a8d1341a224e5b57936bf82ccd9ef0bc",
+  "lastmod": "2026-11-04",
+  "rendered": "2026-11-04T10:41:02+00:00"
  },
  "https://www.donateursbelangen.nl/anbi": {
   "changed": "2026-10-25T05:37:53+00:00",
@@ -16236,6 +16272,12 @@
   "lastmod": "",
   "rendered": "2026-11-01T10:39:30+00:00"
  },
+ "https://www.donateursbelangen.nl/goede-doel/saeckenborgh-expo/r/XV6Yo1edjune9Z": {
+  "changed": "2026-11-04T10:41:29+00:00",
+  "hash": "df9b498ce46850780ad8ef12e52f12ccca407fa7237194f7e07d9090a6b143a6",
+  "lastmod": "",
+  "rendered": "2026-11-04T10:41:29+00:00"
+ },
  "https://www.donateursbelangen.nl/goede-doel/safetynet/r/B3d1YAbdTR0p3z": {
   "changed": "2026-11-01T10:03:52+00:00",
   "hash": "4ff32c7f508c26f3fcdc4360455b92e685ee513d4706e9a277aebd380dc033f7",
@@ -24287,6 +24329,12 @@
   "hash": "5d48aa3af466fbfe2f10f43d112ae484b0da300648c30023ffff96121aeb7ba9",
   "lastmod": "",
   "rendered": "2026-11-01T09:37:10+00:00"
+ },
+ "https://www.donateursbelangen.nl/nieuws-details/vluchtelingenwerk-nederland-presenteert-nieuw-logo-nieuwe-huisstijl/r/4E5dEhIETBALlL": {
+  "changed": "2026-11-04T10:41:30+00:00",
+  "hash": "121e14e451ff01e947daf527232d0ea60df185f08b85086eba65c84720e37d36",
+  "lastmod": "",
+  "rendered": "2026-11-04T10:41:30+00:00"
  },
  "https://www.donateursbelangen.nl/nieuws-details/voedselbank-waarschuwt-voor-nep-collectanten-wij-collecteren-nooit-aan-deur/r/GV2BPnbc5qwoqs": {
   "changed": "2026-10-24T18:44:07+00:00",
@@ -39540,6 +39588,12 @@
   "lastmod": "",
   "rendered": "2026-11-01T08:40:27+00:00"
  },
+ "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-brief/saeckenborgh-expo/r/XV6Yo1edjune9Z": {
+  "changed": "2026-11-04T10:41:29+00:00",
+  "hash": "86391fa678cd9c810348ead777536820b63bf3699637840f066300bce4685fc5",
+  "lastmod": "",
+  "rendered": "2026-11-04T10:41:29+00:00"
+ },
  "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-brief/safetynet/r/B3d1YAbdTR0p3z": {
   "changed": "2026-10-24T16:25:26+00:00",
   "hash": "0cd03b7766bf74a1565e063416d18590d9d7d99b3402855ae4fedf1ca486daad",
@@ -48779,6 +48833,12 @@
   "hash": "f592acc0ed3b5073856ca0455a7e96c805e9238471671c9551c37d08e6686805",
   "lastmod": "",
   "rendered": "2026-11-01T07:19:28+00:00"
+ },
+ "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-email/saeckenborgh-expo/r/XV6Yo1edjune9Z": {
+  "changed": "2026-11-04T10:41:05+00:00",
+  "hash": "12d65d4c4eb72747426ce1b511e23ae26db3b39846d3208defbf43fd584c23b0",
+  "lastmod": "",
+  "rendered": "2026-11-04T10:41:05+00:00"
  },
  "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-email/safetynet/r/B3d1YAbdTR0p3z": {
   "changed": "2026-11-01T07:22:06+00:00",
