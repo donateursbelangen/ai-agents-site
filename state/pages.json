@@ -1,9 +1,9 @@
 {
  "https://www.donateursbelangen.nl/": {
-  "changed": "2026-11-04T10:41:40+00:00",
-  "hash": "1a1fe87cc0d7982b6371e0fab563afd6b261dca1c8051e4fca2b1904d579770e",
-  "lastmod": "2026-11-03",
-  "rendered": "2026-11-04T10:41:40+00:00"
+  "changed": "2026-11-05T10:33:49+00:00",
+  "hash": "a7638443eaecfe3a573926435fe2564af27f07e0184125b639627135b507f1c4",
+  "lastmod": "2026-11-05",
+  "rendered": "2026-11-05T10:33:49+00:00"
  },
  "https://www.donateursbelangen.nl/aansluiten": {
   "changed": "2026-10-24T14:50:32+00:00",
@@ -10477,10 +10477,10 @@
   "rendered": "2026-11-01T07:07:53+00:00"
  },
  "https://www.donateursbelangen.nl/doneren": {
-  "changed": "2026-10-24T14:48:55+00:00",
-  "hash": "00b4fd76f9cc8292f260bd7c344b6fb8f2367564fe5a9c7d1bc7bf6886feea11",
-  "lastmod": "2026-06-01",
-  "rendered": "2026-11-01T07:06:27+00:00"
+  "changed": "2026-11-05T10:33:42+00:00",
+  "hash": "77ac0ba09056a7341b5bcbb77177c32e24b348566d94feaff6f587a960873d16",
+  "lastmod": "2026-11-05",
+  "rendered": "2026-11-05T10:33:42+00:00"
  },
  "https://www.donateursbelangen.nl/doneren-via-iban": {
   "changed": "2026-10-24T14:49:06+00:00",
@@ -10950,6 +10950,12 @@
   "lastmod": "",
   "rendered": "2026-11-01T10:32:38+00:00"
  },
+ "https://www.donateursbelangen.nl/goede-doel/anathoth/r/22ZJJVpjrtZByF": {
+  "changed": "2026-11-05T10:33:49+00:00",
+  "hash": "153e6244e451b37f5b192916399684ca7d2211e0dddc1d6b99a958a5a5b9f2b4",
+  "lastmod": "",
+  "rendered": "2026-11-05T10:33:49+00:00"
+ },
  "https://www.donateursbelangen.nl/goede-doel/animal-heroes/r/yPPRNm2Rqz7HS8": {
   "changed": "2026-11-01T10:58:17+00:00",
   "hash": "994d9474059049388e764b7513152d79684f4553c715badd7cf2e2962847dfcc",
@@ -11051,6 +11057,12 @@
   "hash": "f1c81992c751190390f2eaa820838aa4c28bbbbe1c4c1e8ec4656408f77f372d",
   "lastmod": "",
   "rendered": "2026-11-01T11:02:03+00:00"
+ },
+ "https://www.donateursbelangen.nl/goede-doel/asociatia-szent-ferenc-pentru-copii-handicapati/r/wEHqx3cQn2qkTe": {
+  "changed": "2026-11-05T10:33:48+00:00",
+  "hash": "6e0a2ce0ca388100aa3c9d13f149f565c28f729a61f55db84b4fb26ed2949381",
+  "lastmod": "",
+  "rendered": "2026-11-05T10:33:48+00:00"
  },
  "https://www.donateursbelangen.nl/goede-doel/associacao-ribeira-acima-school-project/r/LZ216iF2aj5LzF": {
   "changed": "2026-11-01T10:06:59+00:00",
@@ -24798,6 +24810,12 @@
   "lastmod": "",
   "rendered": "2026-11-01T09:43:04+00:00"
  },
+ "https://www.donateursbelangen.nl/nieuws-details/zoa-biedt-noodhulp-aan-evacus-uit-belegerde-oekraense-stad-oleshky/r/5BMIR3zoBpPcfV": {
+  "changed": "2026-11-05T10:33:49+00:00",
+  "hash": "b24287294f55eaf61bad442beabed4cd3a06015d7574eb588282e3253ef8e31c",
+  "lastmod": "",
+  "rendered": "2026-11-05T10:33:49+00:00"
+ },
  "https://www.donateursbelangen.nl/nieuws-details/zonder-nederlands-keurmerk-geen-aftrek-voor-gift-aan-buitenlandse-club/r/Pu1z1aTs6IVKZM": {
   "changed": "2026-10-24T18:46:52+00:00",
   "hash": "b8a62b9a885d7451255e1e33253447bdeab7b2bb264b41e440dee0fdb4e858e0",
@@ -34266,6 +34284,12 @@
   "lastmod": "",
   "rendered": "2026-11-01T08:25:46+00:00"
  },
+ "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-brief/anathoth/r/22ZJJVpjrtZByF": {
+  "changed": "2026-11-05T10:33:42+00:00",
+  "hash": "b81d5b2defd1af0f16b38a07e93ec8d050455ea5e5e89c158ad6b9805eb16f92",
+  "lastmod": "",
+  "rendered": "2026-11-05T10:33:42+00:00"
+ },
  "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-brief/animal-heroes/r/yPPRNm2Rqz7HS8": {
   "changed": "2026-11-01T08:25:52+00:00",
   "hash": "f40bb1a61c72b5ee514bf70258b04ff054b65c23c9eedf210be74a36aac6c666",
@@ -34367,6 +34391,12 @@
   "hash": "85d60830aae365b0f9f9108ef3349b8917d1b18eb3c9e288efe98590ef039c33",
   "lastmod": "",
   "rendered": "2026-11-01T08:24:02+00:00"
+ },
+ "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-brief/asociatia-szent-ferenc-pentru-copii-handicapati/r/wEHqx3cQn2qkTe": {
+  "changed": "2026-11-05T10:33:42+00:00",
+  "hash": "3a1cec52b271a28c5a64ffbe0eff94cce56dc7e1e6eda19ec2bb512b2e20dbab",
+  "lastmod": "",
+  "rendered": "2026-11-05T10:33:42+00:00"
  },
  "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-brief/associacao-ribeira-acima-school-project/r/LZ216iF2aj5LzF": {
   "changed": "2026-10-24T16:36:43+00:00",
@@ -43512,6 +43542,12 @@
   "lastmod": "",
   "rendered": "2026-11-01T07:33:47+00:00"
  },
+ "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-email/anathoth/r/22ZJJVpjrtZByF": {
+  "changed": "2026-11-05T10:33:42+00:00",
+  "hash": "b8f9e7b9547210e921c1d3510600a6b80a8ca5207caad604e520125b8deecd4b",
+  "lastmod": "",
+  "rendered": "2026-11-05T10:33:42+00:00"
+ },
  "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-email/animal-heroes/r/yPPRNm2Rqz7HS8": {
   "changed": "2026-11-01T07:19:49+00:00",
   "hash": "499962295059f4e09c3f7155dc841aaed09a4157266cae22382c292f67432317",
@@ -43613,6 +43649,12 @@
   "hash": "63180a8c158a990ba59773094a373de6cd49255a94e3e380d56e315b43dacb8c",
   "lastmod": "",
   "rendered": "2026-11-01T07:41:58+00:00"
+ },
+ "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-email/asociatia-szent-ferenc-pentru-copii-handicapati/r/wEHqx3cQn2qkTe": {
+  "changed": "2026-11-05T10:33:39+00:00",
+  "hash": "b4f1330cec5e5d816dbe2a5534d20dd5b6acdfdda6729de36385a1f2a1021d88",
+  "lastmod": "",
+  "rendered": "2026-11-05T10:33:39+00:00"
  },
  "https://www.donateursbelangen.nl/opzeggen-goed-doel-per-email/associacao-ribeira-acima-school-project/r/LZ216iF2aj5LzF": {
   "changed": "2026-10-24T14:59:15+00:00",
