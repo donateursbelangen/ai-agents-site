@@ -1,16 +1,11 @@
 {
- "mode": "full",
- "datum": "2026-11-08T10:33:42+00:00",
- "duur_min": 220.8,
- "pagina's": 8886,
+ "mode": "daily",
+ "datum": "2026-11-09T11:08:48+00:00",
+ "duur_min": 0.2,
+ "pagina's": 1,
  "resultaat": {
-  "ongewijzigd": 6766,
-  "bijgewerkt": 2118,
-  "mislukt": 2
+  "bijgewerkt": 1
  },
  "verwijderd": 0,
- "mislukt": [
-  "https://www.donateursbelangen.nl/column",
-  "https://www.donateursbelangen.nl/whitepaper-de-donateur-centraal-stellen"
- ]
+ "mislukt": []
 }
