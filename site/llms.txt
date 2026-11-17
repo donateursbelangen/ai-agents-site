@@ -29,7 +29,7 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Opzeggen per e-mail](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-email): Per goed doel hulp bij het opzeggen van een donatie per e-mail. 1544 pagina's.
 - [Opzeggen per brief](https://ai-agents.donateursbelangen.nl/overzicht/opzeggen-goed-doel-per-brief): Per goed doel hulp bij het opzeggen van een donatie per brief. 1544 pagina's.
 - [Communicatievoorkeuren](https://ai-agents.donateursbelangen.nl/overzicht/communicatievoorkeuren): Per organisatie informatie over het doorgeven van communicatievoorkeuren. 1510 pagina's.
-- [Nieuws](https://ai-agents.donateursbelangen.nl/overzicht/nieuws-details): Nieuwsberichten. 819 pagina's.
+- [Nieuws](https://ai-agents.donateursbelangen.nl/overzicht/nieuws-details): Nieuwsberichten. 820 pagina's.
 - [Blog](https://ai-agents.donateursbelangen.nl/overzicht/blogitem): Blogartikelen. 200 pagina's.
 - [Signalen](https://ai-agents.donateursbelangen.nl/overzicht/signaal): Signalen over praktijken in de goededoelensector. 66 pagina's.
 - [Stakeholders](https://ai-agents.donateursbelangen.nl/overzicht/stakeholder): Organisaties en partijen in de goededoelensector. 41 pagina's.
@@ -114,6 +114,7 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Online & Digitale Fondsenwerving](https://ai-agents.donateursbelangen.nl/online-fondsenwerving)
 - [Op welke manieren kun jij als individuele particulier bijdragen en geven aan goede doelen](https://ai-agents.donateursbelangen.nl/geven)
 - [Opzegservice](https://ai-agents.donateursbelangen.nl/donateurs)
+- [Opzegservice donateurschap goede doelen via brief aan antwoordnummer](https://ai-agents.donateursbelangen.nl/opzegservice-donateurschap-via-brief)
 - [Overzicht van alle goede doelen week acties en organisaties per plaats in Nederland](https://ai-agents.donateursbelangen.nl/goede-doelen-weken)
 - [Participantvoorwaarden](https://ai-agents.donateursbelangen.nl/participantvoorwaarden)
 - [Petities](https://ai-agents.donateursbelangen.nl/petities)
@@ -148,4 +149,3 @@ Dit subdomein bevat een statische, leesbare kopie van www.donateursbelangen.nl v
 - [Whatsapp community](https://ai-agents.donateursbelangen.nl/whatsapp)
 - [Word gratis lid van Donateursbelangen](https://ai-agents.donateursbelangen.nl/deelnemen)
 - [Zoek hieronder het goede doel waaraan je wil doneren](https://ai-agents.donateursbelangen.nl/doneren-via-iban)
-- [Zoek hieronder het goede doel waarbij je jouw donateurschap wil opzeggen via een brief](https://ai-agents.donateursbelangen.nl/opzegservice-donateurschap-via-brief)

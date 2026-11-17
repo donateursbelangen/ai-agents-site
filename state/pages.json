@@ -21653,6 +21653,12 @@
   "lastmod": "",
   "rendered": "2026-11-15T10:07:44+00:00"
  },
+ "https://www.donateursbelangen.nl/nieuws-details/als-verdwijnt-wat-ons-beschermd/r/743tiyYDY55VVD": {
+  "changed": "2026-11-17T11:37:23+00:00",
+  "hash": "216f295ffd48c8a2c24f2413ba6e77516d565a9bd60f1caf6540e015c3e2965a",
+  "lastmod": "",
+  "rendered": "2026-11-17T11:37:23+00:00"
+ },
  "https://www.donateursbelangen.nl/nieuws-details/amerika-s-meest-genereuze-filantropen-2025/r/woWXtWuoQqMJ1h": {
   "changed": "2026-10-24T18:46:53+00:00",
   "hash": "90c50470186c0100a63ec0aa27d93a73c1c4f02e4cece9560b0cbff925b6187e",
@@ -35408,14 +35414,14 @@
  "https://www.donateursbelangen.nl/onderzoek-deur-aan-deur": {
   "changed": "2026-10-24T14:50:08+00:00",
   "hash": "25107cb82e542d5c099aa9a77b506333897804edcd085bf8d57f2e17c2f1d00d",
-  "lastmod": "2025-09-29",
-  "rendered": "2026-11-15T07:35:12+00:00"
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:22+00:00"
  },
  "https://www.donateursbelangen.nl/onderzoek-opzeggen": {
   "changed": "2026-10-24T14:48:49+00:00",
   "hash": "686f057a8ac0eae94f2d6a13a044234a367eebf95bef8b445775295c30ca8433",
-  "lastmod": "2026-11-14",
-  "rendered": "2026-11-15T07:34:05+00:00"
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:13+00:00"
  },
  "https://www.donateursbelangen.nl/onderzoeksrapport-detail/digitale-trends-bij-non-profits-online-doneren-groeit/r/yoQDRgPKQeTRpA": {
   "changed": "2026-11-16T10:51:35+00:00",
@@ -35468,8 +35474,8 @@
  "https://www.donateursbelangen.nl/onderzoeksrapporten": {
   "changed": "2026-10-24T14:48:33+00:00",
   "hash": "e6d93d5084c3481b95f73f547f1d8a4cf63d65c59c7af223b33f0d1f3410f0bc",
-  "lastmod": "2026-10-07",
-  "rendered": "2026-11-15T07:33:30+00:00"
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:13+00:00"
  },
  "https://www.donateursbelangen.nl/online-fondsenwerving": {
   "changed": "2026-11-15T07:33:51+00:00",
@@ -35480,8 +35486,8 @@
  "https://www.donateursbelangen.nl/opzeggen": {
   "changed": "2026-10-24T14:48:56+00:00",
   "hash": "10ceeeb6fe71db9e99b621502411d95f5cc1c4b688d7bde7f65592f2b1d5193f",
-  "lastmod": "2025-12-01",
-  "rendered": "2026-11-15T07:33:59+00:00"
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:16+00:00"
  },
  "https://www.donateursbelangen.nl/opzeggen-donatie": {
   "changed": "2026-10-24T14:49:52+00:00",
@@ -54024,10 +54030,10 @@
   "rendered": "2026-11-15T07:34:14+00:00"
  },
  "https://www.donateursbelangen.nl/opzegservice-donateurschap-via-brief": {
-  "changed": "2026-10-24T14:49:42+00:00",
-  "hash": "ed1812d0a7fdeb834963a23097e76b5912d11d8edb91f2295eae76cdfe61d8b9",
-  "lastmod": "2026-02-01",
-  "rendered": "2026-11-15T07:34:24+00:00"
+  "changed": "2026-11-17T11:37:13+00:00",
+  "hash": "44fe5954c28213ad7cd6150ac1ff962a47d75e046b15991bdbe26e70c67ccd89",
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:13+00:00"
  },
  "https://www.donateursbelangen.nl/opzegservice-donateurschap-via-email": {
   "changed": "2026-11-15T07:34:08+00:00",
@@ -54084,10 +54090,10 @@
   "rendered": "2026-11-15T07:34:16+00:00"
  },
  "https://www.donateursbelangen.nl/privacyschending": {
-  "changed": "2026-10-24T14:38:49+00:00",
-  "hash": "a26f471aa12c28133ceca640586727c7db329fa1f1bed4f53899d51a43501242",
-  "lastmod": "2025-09-29",
-  "rendered": "2026-11-15T07:31:30+00:00"
+  "changed": "2026-11-17T11:37:13+00:00",
+  "hash": "818a9bcec2510514cf31fa1196dd892f049f46834fc78cc0b1eb2fdf3cd4ee62",
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:13+00:00"
  },
  "https://www.donateursbelangen.nl/profilering": {
   "changed": "2026-11-15T07:34:54+00:00",
@@ -54528,10 +54534,10 @@
   "rendered": "2026-11-15T09:55:35+00:00"
  },
  "https://www.donateursbelangen.nl/signalen-donateursbelangen": {
-  "changed": "2026-11-08T06:56:21+00:00",
-  "hash": "0b79acd961f78b9b7d2ee725ca95e3d94c95181a09fec60c9910f86ae8e23684",
-  "lastmod": "2026-11-14",
-  "rendered": "2026-11-15T07:34:22+00:00"
+  "changed": "2026-11-17T11:37:13+00:00",
+  "hash": "5cbb5601b1c1cbcae15c94feb23c60c6ab0c95935a19effe56e37cb84c44b689",
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:13+00:00"
  },
  "https://www.donateursbelangen.nl/socutera": {
   "changed": "2026-10-24T14:49:59+00:00",
@@ -54812,8 +54818,8 @@
  "https://www.donateursbelangen.nl/themas": {
   "changed": "2026-10-24T14:50:19+00:00",
   "hash": "ec771740d5edd16831dad67c568b73c1adcf37da68e74134e96314994037481e",
-  "lastmod": "2025-10-09",
-  "rendered": "2026-11-15T07:34:51+00:00"
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:20+00:00"
  },
  "https://www.donateursbelangen.nl/toezicht-goede-doelen-via-zelfregulering": {
   "changed": "2026-10-24T14:48:40+00:00",
@@ -54867,7 +54873,7 @@
  "https://www.donateursbelangen.nl/woordenlijst": {
   "changed": "2026-11-15T11:27:13+00:00",
   "hash": "30a40d09ec867ccd67a4b9a2a8f184a50baf5a2a40f5cd4b20e6059e02355463",
-  "lastmod": "2026-10-29",
-  "rendered": "2026-11-15T11:27:13+00:00"
+  "lastmod": "2026-11-17",
+  "rendered": "2026-11-17T11:37:17+00:00"
  }
 }
