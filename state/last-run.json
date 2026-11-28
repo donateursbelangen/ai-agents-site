@@ -1,11 +1,9 @@
 {
  "mode": "daily",
- "datum": "2026-11-27T11:56:02+00:00",
- "duur_min": 0.2,
- "pagina's": 4,
- "resultaat": {
-  "bijgewerkt": 4
- },
+ "datum": "2026-11-28T11:30:13+00:00",
+ "duur_min": 0.0,
+ "pagina's": 0,
+ "resultaat": {},
  "verwijderd": 0,
  "mislukt": []
 }
